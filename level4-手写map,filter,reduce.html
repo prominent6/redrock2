@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //实现数组的filter
+        Arrary.prototype.myFilter = function(callback) {
+            if (typeof(callback) != 'function') {
+                throw new TypeError(`${callback} is not function`)
+            }
+            let arr = this;
+            let result = [];
+            const callbackThis = thisArg || window.document;
+            for (let i = 0; i < arr.length; i++) {
+                if (callback.call(callbackThis, arr[i], i, arr)) {
+                    result.push(arr[i])
+                }
+            }
+            return result;
+        }
+
+
+        //实现数组的reduce
+        Array.prototype.myReduce = function(callback, initValue) {
+            let len = this.length;
+            let i = 0;
+            let accu = (typeof initValue != 'undefined') ? initValue : this[0];
+            while (i < len) {
+                accu = callback(accu, this[i], i, this);
+                i++;
+            }
+            return accu;
+        }
+
+        //实现数组的map
+        Array.prototype.myMap = function(callback, thisArg) {
+            if (typeof(callback) != 'function') {
+                throw new TypeError(`${callback} is not function`)
+            }
+            let arr = this;
+            const result = [];
+            const callbackThis = thisArg || window.document;
+            for (let i = 0; i < arr.length; i++) {
+                result.push(callback.call(callbackThis, arr[i], i, arr));
+            }
+            return result;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.before = function(callback) {
+            var _that = this;
+            return function() {
+                callback();
+                _that();
+            }
+        }
+        Function.prototype.after = function(callback) {
+            var _that = this;
+            return function() {
+                _that();
+                callback();
+            }
+        }
+
+        function func() {
+            console.log(2);
+        }
+
+        let newFunc = func.before((a = 1) => {
+            console.log(1)
+        }).after((b = 3) => {
+            console.log(b);
+        })
+        newFunc()
+    </script>
+</body>
+
+</html>
