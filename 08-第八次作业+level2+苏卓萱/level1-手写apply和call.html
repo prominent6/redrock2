@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //其作用都是改变this指向,让新的对象可以执行该函数
+
+
+        //call
+        //因为call方法是每一个函数都拥有的，所以我们需要在Function.prototype上定义myCall
+        Function.prototype.myCall = function(content) {
+            //如果第一个参数为空则默认指向window对象
+            var content = content || window
+                //存放除第一个参数以外的其余参数的数组
+            var args = [...arguments].slice(1)
+
+            //myCall里面的this指的是personOne.say这个方法
+            //object.func=this相当于给object这个对象克隆了一个personOne.say方法，让object在调用这个方法，相当于object.personOne.say，达到了call的效果
+            content.fn = this
+
+            //object.func (...args)里面的参数即为传入的其余参数。
+            var result = content.fn(...args)
+                //记住最后要删除掉临时添加的方法，否则obj就无缘无故多了个fn
+            delete content.fn
+            return result
+        }
+
+        //apply
+        Function.prototype.myApply = function(content) {
+            var content = content || window
+            if (arguments.length > 1) {
+                var args = arguments[1] //存放参数的数组
+            } else {
+                var args = [] //存放参数的数组
+            }
+            content.fn = this
+            const result = content.fn(...args)
+            delete content.fn
+            return result
+        }
+
+        //bind
+        Function.prototype.myBind = function(content) {
+            if (typeof this !== 'function') {
+                throw new TypeError('Error')
+            }
+            var content = content || window
+            var self = this
+            var args = [...arguments].slice(1)
+
+            //bind返回的是一个函数，并且这个函数不会执行
+            //需要我们再次调用，那么当我们调用的时候，我们依旧可以对这个函数进行传递参数
+            //需要在返回的函数中声明一个空的数组接收调用bind函数返回的函数时传递的参数
+            return function F() {
+                //因为返回了一个函数，可以new F(),所以需要判断
+                if (this instanceof F) {
+                    return new self(...args, ...arguments)
+                }
+                return self.apply(content, args.concat(...arguments))
+            }
+        }
+    </script>
+</body>
+
+</html>

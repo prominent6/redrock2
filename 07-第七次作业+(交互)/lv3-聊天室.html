@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        background-color: rgb(209, 250, 250);
+        width: 550px;
+        height: 700px;
+        margin-left: 30%;
+        border-radius: 3%;
+        font-size: x-large;
+    }
+    
+    textarea {
+        background-color: darkkhaki;
+        margin-left: 40%;
+    }
+    
+    button {
+        background-color: rgb(59, 71, 54);
+        border-radius: 3%;
+    }
+    
+    span {
+        color: red;
+        margin-left: 470px;
+        background-color: rgb(148, 144, 144);
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+    }
+</style>
+
+<body style="background-color: darkgrey;">
+    <span>离开</span>
+    <div></div>
+    <textarea cols="30" rows="5"></textarea>
+    <button>发送</button>
+    <script>
+        const div = document.querySelector('div');
+        const textarea = document.querySelector('textarea');
+        const but = document.querySelector('button');
+        const span = document.querySelector('span');
+        but.addEventListener('click', () => {
+
+            let li = document.createElement('li');
+            ws.send(textarea.value);
+            textarea.value = '';
+        });
+        const ws = new WebSocket('wss://anonym.ink:8000/homework/chatroom?username=卷卷&avatar=https://avatars.githubusercontent.com/u/72426675?v=4');
+        ws.onopen = () => {
+            span.innerHTML = '在线';
+            span.style.color = 'green';
+        };
+        ws.onclose = () => {
+            span.innerHTML = '离开';
+            span.style.color = 'red';
+        };
+        ws.onmessage = (rec) => {
+            const Data = JSON.parse(rec.data);
+            const data = Data.data;
+            const name = Data.username;
+            const avatar = Data.avatar;
+            let li = document.createElement('li');
+
+            if (Data.type == 'OPEN') {
+                div.appendChild(li);
+                li.innerHTML = name + "进来了";
+                setTimeout(() => {
+                    li.innerHTML = '';
+                }, 1000);
+            }
+            if (Data.type == 'MESSAGE') {
+                let a = document.createElement('img');
+                a.src = avatar;
+                div.appendChild(a);
+                div.appendChild(li);
+                li.innerHTML = name + ':' + data;
+
+            }
+            if (Data.type == 'CLOSE') {
+
+                div.appendChild(li);
+                li.innerHTML = name + "走了";
+                setTimeout(() => {
+                    li.innerHTML = '';
+                }, 1000);
+            }
+        };
+    </script>
+</body>
+
+</html>

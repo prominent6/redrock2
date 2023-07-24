@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        
+        .aa {
+            width: 200px ! important;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <ul id="ul"></ul>
+    <script>
+        let box = document.getElementById('box')
+
+        //1. 修改样式尽量写在一起，分开读写操作
+        box.style.width = '200px'
+        box.styel.height = '200px'
+            //如果连续的话，只进行一次回流
+            //中间有间断，就两次回流
+
+        //2. 集中样式改变
+        box.style.cssText = "width:200px;height:200px;"
+        box.className = 'aa'
+
+        //3. 元素批量修改
+        let ul = document.getElementById('ul')
+            /* for (let i = 0; i < 5; i++) {
+                let li = document.createElement('li')
+                li.innerHTML = i
+                ul.appendChild(li)
+            } //进行5次回流重绘 */
+            /* let tag = document.createDocumentFragment()
+            for (let i = 0; i < 5; i++) {
+                let li = document.createElement('li')
+                li.innerHTML = i
+                tag.appendChild(li)
+            }
+            ul.appendChild(tag)
+            tag = null //只进行一次 */
+
+        /*         let str = ''
+                for (let i = 0; i < 5; i++) {
+                    let li = document.createElement('li')
+                    li.innerHTML = i
+                    str += '<li>${i}</li>'
+                }
+                ul.innerHTML = str
+         */
+
+        // box.styel.left = "100px"  //no!!
+        //4. 尽量用css3写，css3硬件加速
+        // box.style.transform = 'translateX(100px)'
+
+        //5.缓存局部信息
+        let a = box.clientWidth
+        let b = box.clientHeight
+        box.style.width = a + '100px'
+        box.style.height = b + '100px'
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    用户名：<input type="text" id="username"> 密码：
+    <input type="text" id="password">
+    <button>提交</button>
+    <script>
+        const username = document.querySelector('#username');
+        const password = document.querySelector('#password');
+        const but = document.querySelector('button');
+        but.addEventListener('click', async() => {
+            const result = await fetch('https://anonym.ink:8000/homework/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    "username": 'admin',
+                    "password": 'root'
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            const Result = await result.text();
+        })
+    </script>
+</body>
+
+</html>

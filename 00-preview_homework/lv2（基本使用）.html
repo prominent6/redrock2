@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .left {
+            float: left;
+        }
+        
+        .right {
+            float: right;
+        }
+        
+        .special {
+            float: left;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer" style="width: 600px; height: 320px;background-color: aqua;margin: 140px auto;text-align: center;">
+        <h2>我是h2,跑中间来了哟</h2>
+        <div class="inner1" style="width: 300px; height: 100px; background-color: blueviolet;line-height: 100px;margin: 0 auto; border-radius: 30px;">
+            我不仅垂直居中，我的框框还是圆角的
+        </div>
+        <div style="margin: 20px auto;">上面的圆角框大小是300px*100px的嗷，而且我跟上下都相距20px</div>
+        <div class="bottom">
+            <div class="left" style="background-color: brown;width: 220px;height: 80px;line-height: 80px;border-radius: 15px;">我是220px*80px的左护法</div>
+            <div class="special">整个蓝色的大框是600px*320px的</div>
+            <div class="right" style="background-color: brown;width: 220px;height: 80px;line-height: 80px;border-radius: 15px;">我是220px*80px的右护法</div>
+        </div>
+    </div>
+</body>
+
+</html>

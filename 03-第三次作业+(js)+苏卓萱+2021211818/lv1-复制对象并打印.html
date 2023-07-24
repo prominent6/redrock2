@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 我们创建了一个对象
+
+        function creatperson(name, age, gender) {
+            //创建一个新的对象
+            var obj = new Object();
+            //向对象中添加属性
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            return obj;
+        }
+        var obj1 = creatperson("xiaosu", 18, "女");
+        var obj2 = creatperson("xiaolan", 18, "男");
+        var obj3 = creatperson("xiaosu", 18, "女");
+
+        /*         // 手写一个复制函数
+                function copy(insertObj) {
+                    let newObj = {};
+                    //for-in循环遍历的是传入对象的属性，使用中括号语法可以访问属性，并将属性存到空对象的属性上
+                    for (let i in insertObj) {
+                        newObj[i] = insertObj[i];
+                    }
+                    return newObj;
+                }
+                // 使用复制函数复制对象
+                let obj4 = copy(obj1);
+                let obj5 = copy(obj2);
+                let obj6 = copy(obj3);
+         */
+        //浅复制,对象的属性类型仅仅为基本类型,对象的属性如果是一个对象，则只会复制该属性对象在内存中的引用。
+        var obj4 = {...obj1
+        };
+        var obj5 = Object.assign({}, obj2);
+        console.log(obj4);
+        console.log(obj5);
+        //都可用于将多个源对象的属性值复制到目标对象上，如var obj = {...obj1,...obj2 };
+
+        /*         //方法一：创建一个空数组用来接收对象
+                let arr = [];
+                //将对象压入数组
+                arr.push(obj4, obj5, obj6);
+                // 控制台输出
+                console.table(arr);
+         */
+        //方法二，第二个参数可选，为一个键值名
+        // console.table([obj4, obj5, obj6], ["name"]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 不修改原来的功能，而是在原有的基础上，去添加新的功能 -->
+    <script>
+        //让所有的函数实例都有before方法，添加到原型
+        Function.prototype.before = function(callback) {
+            //this指Say函数
+            var _that = this;
+            return function() {
+                    //this指window
+                    //新增的功能——newFunc
+                    callback();
+                    //原有基础功能执行
+                    _that();
+                }
+        }
+        Function.prototype.after = function(callback) {
+            var _that = this;
+            return function() {
+                _that();
+                callback();
+            }
+        }
+
+        //function是Function的一个实例
+        function func() {
+            console.log(2);
+        }
+
+        let newFunc = func.before((a = 1) => {
+            console.log(1)
+        }).after((b = 3) => {
+            console.log(b);
+        })
+        newFunc()
+    </script>
+</body>
+
+</html>

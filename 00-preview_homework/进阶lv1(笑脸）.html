@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            margin-top: -200px;
+            margin-left: -200px;
+            border-radius: 100%;
+            border: 4px solid #e58608;
+            background-color: #fce871;
+        }
+        
+        .eyebrows {
+            height: 24px;
+            margin-top: 10px;
+        }
+        
+        .eyebrow-left,
+        .eyebrow-right {
+            width: 24px;
+            height: 12px;
+            /* 圆形去掉下面 */
+            border-radius: 24px 24px 0 0;
+            border: 4px solid #804103;
+            border-bottom: 0px;
+        }
+        
+        .eyebrow-left {
+            float: left;
+            margin-left: 70px;
+        }
+        
+        .eyebrow-right {
+            float: right;
+            margin-right: 70px;
+        }
+        
+        .eyes {
+            height: 25px;
+            margin-top: 40px;
+        }
+        
+        .eye-left,
+        .eye-right {
+            width: 50px;
+            height: 25px;
+            border-radius: 50px 50px 0 0;
+            border: 5px solid #804103;
+            border-bottom: 0;
+        }
+        
+        .eye-left {
+            float: left;
+            margin-left: 80px;
+        }
+        
+        .eye-right {
+            float: right;
+            margin-right: 80px;
+        }
+        
+        .mouth {
+            width: 320px;
+            height: 160px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border-radius: 0 0 320px 320px;
+            border: 3px solid #b42a02;
+            background-color: white;
+            overflow: hidden;
+        }
+        
+        .mouth div {
+            float: left;
+            width: 4px;
+            height: 100%;
+            margin: 0 30px;
+            background-color: #b2926e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 眉毛 -->
+        <div class="eyebrows">
+            <div class="eyebrow-left"></div>
+            <div class="eyebrow-right"></div>
+        </div>
+        <!-- 眼睛 -->
+        <div class="eyes">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+        </div>
+        <!-- 嘴 -->
+        <div class="mouth">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

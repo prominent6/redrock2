@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.
+        let obj2 = {
+                name: 'xiaosu',
+                age: 18,
+                text: {
+                    name: "xiaolan"
+                },
+                sayHi: function() {
+                    console.log('hi~');
+                }
+            }
+            //2.
+        let obj1 = new Object();
+        obj1.name = 'xiaosu';
+        obj1.age = 18;
+        obj.sayHi = function() {
+                console.log('hi~');
+            }
+            //3.
+        function Person() {
+            this.name = 'xiaosu';
+            this.age = 18;
+        }
+        let p = new Person();
+    </script>
+</body>
+
+</html>

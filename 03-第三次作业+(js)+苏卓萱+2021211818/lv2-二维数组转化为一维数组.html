@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        const arr = [
+                [1, 2],
+                [3, 4],
+                [5, 6]
+            ]
+            //1.reduce()
+        function fn(array) {
+            // 初始化数组为[]（使用ES6语法），第一次reduce回调中相当于执行[].concat([1,2])
+            // 之后正常叠加
+            const a = array.reduce((newArr = [], present) => {
+                console.log(newArr);
+                //[1,2] 
+                //[1,2,3,4]  
+                //[1,2,3,4,5,6]
+                return newArr.concat(present)
+            })
+            return a;
+        }
+        console.log(fn(arr));
+
+        //2.apply()
+        //  提示：使用递归思想
+        let arr1 = [
+            [1, [2, 3], 4],
+            [5, [6, 7], 8, 9]
+        ];
+        var onearr = [].concat.apply([], arr1);
+        console.log(onearr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

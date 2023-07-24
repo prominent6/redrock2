@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LV1</title>
+    <style>
+        .color {
+            background-color: pink;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .width {
+            width: 300px;
+        }
+        
+        .special {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>我是一级标题</h1>
+    <p>我是一个p标签</p>
+    <h2>我是二级标题</h2>
+    <div>我是一个div盒子，下面是三个img标签，可以从它的src属性来获得图片地址</div>
+    <img src="cqupt.jpg" alt="就是重邮校园啦" title="下山之路" width="100px" />
+    <img src="cqupt1.jpg" title="宿舍外的风景" width="100px" />
+    <img src="cqupt2.jpg " title="重邮夜景 " width="100px " />
+    <div class="color ">我是一个长150px，宽150px的一个颜色为粉色的盒子</div>
+    <a href="baidu.html " target="_blank ">点击我可以跳转百度</a> <br/>
+    <a href="https://www.baidu.com/ " target="_blank ">要不再试一次呢</a>
+
+    <ul>
+        <li>我</li>
+        <li>是</li>
+        <li>无</li>
+        <li>序</li>
+        <li>表</li>
+    </ul>
+    <hr>
+    <ol>
+        <li>我</li>
+        <li>是</li>
+        <li>有</li>
+        <li>序</li>
+        <li>表</li>
+    </ol>
+
+    <form>
+        <input value="我是一个宽300px但是输入什么都没用的输入框 " class="width" disabled="disabled">
+        <button disabled="disabled">我是一个不管怎么按都没用的按钮</button>
+        <br/>
+    </form>
+
+    <table border="1px">
+        <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td colspan="2" class="special">内容</td>
+        </tr>
+
+    </table>
+    <p>下面是你自己的自我描述</p>
+    <form>
+        性别：男<input type="radio" name="sex"> 女
+        <input type="radio" name="sex" checked="checked "> 城市：
+        <select>
+            <option>成都</option>
+            <option selected="selected ">重庆</option>
+        </select> 爱好：
+        <input type="checkbox">打游戏
+        <input type="checkbox" checked="checked ">敲代码
+        <input type="checkbox" checked="checked ">运动
+        <div>
+            <span>目标：</span>
+            <textarea>我要努力加入web前端</textarea>
+        </div>
+    </form>
+</body>
+
+</html>

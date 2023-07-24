@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        let inp = document.querySelector("input");
+        //防抖
+        //计时器
+        /* let t = null;
+        inp.oninput = function() {
+            if (t != null) {
+                //删除以前的计时器，只要最后一个
+                clearTimeout(t);
+            }
+            t = setTimeout(() => {
+                console.log(this.value);
+            }, 500)
+        } */
+
+        //高阶防抖 debounce
+        inp.oninput = debounce(function() {
+            console.log(this.value);
+        }, 500)
+
+        function debounce(fn, delay) {
+            let t = null;
+            return function() {
+                if (t != null) {
+                    //删除以前的计时器，只要最后一个
+                    clearTimeout(t);
+                }
+                t = setTimeout(() => {
+                    fn.call(this)
+                }, delay)
+            }
+        }
+
+
+        /* //节流
+        let flag = true;
+        inp.oninput = function() {
+            if (flag) {
+                setTimeout(() => {
+                    console.log(this.value);
+                    flag = true;
+                }, 500)
+            }
+            flag = false;
+        } */
+
+
+        //高阶节流
+        /* inp.oninput = throttle(function() {
+            console.log(this.value);
+        }, 500)
+
+        function throttle(fn, delay) {
+            let flag = true;
+            return function() {
+                if (flag) {
+                    setTimeout(() => {
+                        fn.call(this) //
+                        flag = true;
+                    }, delay)
+                }
+                flag = false;
+            }
+        } */
+    </script>
+</body>
+
+</html>
